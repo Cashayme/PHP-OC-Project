@@ -1,15 +1,11 @@
-html {
-	scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
 	background-color: #aec5d5;
 	font-family: 'Montserrat', sans-serif;
 }
 
-.navbar {
-	background-color: #1f4c72;
-}
+.navbar { background-color: #1f4c72; }
 
 .bg-image {
 	background-image: url(http://yesofcorsa.com/wp-content/uploads/2017/11/4K-Alaska-Photo-Download.jpg);
@@ -74,6 +70,7 @@ body {
     background-color: #00000014;
     margin: 28px;
     box-shadow: inset 0px 0px 2px;
+    position: relative;
 }
 
 .pic-container {
@@ -93,9 +90,7 @@ body {
 	text-align: center;
 }
 
-a {
-	color: white
-}
+a {	color: white }
 
 a:hover {
 	text-decoration: none;
@@ -117,3 +112,21 @@ a:hover {
 	opacity: 1;
 	transition-duration: 0.3s;
 }
+
+.fa-exclamation-circle {
+	position: absolute;
+    right: 12px;
+    top: 6px;
+    font-size: 32px;
+    color: black;
+}
+
+.com-date {
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+}
+
+#comment { min-height: 150px; }
