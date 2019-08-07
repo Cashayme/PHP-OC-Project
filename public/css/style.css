@@ -48,15 +48,15 @@ body {
 }
 
 .btn-primary {
-	color: #f2e8c9;
-	background-color: #444444;
-	border-color: #636363;
+	color: #f2e8c9!important;
+	background-color: #444444!important;
+	border-color: #636363!important;
 }
 
 .btn-primary:hover {
-	color: #0a0a0a;
-	background-color: #f2e8c9;
-	border-color: #000000;
+	color: #0a0a0a!important;
+	background-color: #f2e8c9!important;
+	border-color: #000000!important;
 }
 
 .desc-chapter {
@@ -130,3 +130,9 @@ a:hover {
 }
 
 #comment { min-height: 150px; }
+
+.form-control {
+	border-bottom: 1px solid #ced4da!important;
+	margin: 0 5px 1px 42px!important;
+	color: black!important;
+}

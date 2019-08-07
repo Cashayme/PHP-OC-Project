@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
 
+
 <div id="book" class="container jumbotron jumbotron-fluid col-lg-8 col-md-12 col-sm-12 col-xs-12 d-flex flex-wrap justify-content-center ">
     <h1 class="display-4 card-header col-12 text-center"> <i class="fas fa-book"></i>  Billet simple pour l'Alaska</h1>
 
@@ -12,7 +13,7 @@
             <img class="card-img-top" src="<?= $data['picture'] ?>" alt="Card image cap">
             <div class="card-body">
                 <h1 class="card-title"><?= $data['title'] ?></h5>
-                <p class="card-text desc-chapter"><?= $data['description'] ?></p>
+                <p class="card-text desc-chapter white-text"><?= $data['description'] ?></p>
                 <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="btn btn-primary">Lire l'article</a>
             </div>
         </article>

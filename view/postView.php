@@ -1,17 +1,17 @@
 <?php ob_start(); ?>
 
 <div class="container jumbotron jumbotron-fluid col-lg-8 col-md-12 col-sm-12 col-xs-12 d-flex flex-wrap justify-content-center ">
-    <h1 class="display-4 card-header col-12 text-center"> <a id="back" href="/projet_oc"><i class="fas fa-arrow-left"></i></a> <?= $post['title'] ?> </h1>
+    <h1 class="display-4 card-header col-12 text-center"> <a id="back" href="index.php"><i class="fas fa-arrow-left"></i></a> <?= $post['title'] ?> </h1>
     <img src=" <?= $post['picture'] ?> " alt="Illustration du chapitre" class="pic-container">
     <p class="text-container"> <?= $post['content'] ?> </p>
 
-    <h3>Commentaires</h3>
+    <h3 id="title-comments">Commentaires</h3>
 
     <?php
     while ($comment = $comments->fetch()) {
     ?>
         <p class="text-container col-11">
-            <strong><?= htmlspecialchars($comment['author']) ?></strong><br><a href="#" title="Signaler ce commentaire"><i class="fas fa-exclamation-circle"></i></a>
+            <strong><?= htmlspecialchars($comment['author']) ?></strong><br><a href="#" title="Signaler ce commentaire"><i class="fas fa-exclamation-circle" data-toggle="tooltip" data-placement="top" title="Signaler ce commentaire"></i></a>
             <?= htmlspecialchars($comment['comment']) ?>
             <i class="com-date"><?= $comment['comment_date_fr'] ?></i>
         </p>
@@ -19,7 +19,7 @@
     }
     ?>
 
-    <form class="col-12" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+    <form class="col-12" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>#title-comments" method="post">
         <h3 class="col-11">Postez un commentaire</h3>
       <div class="form-group col-lg-2">
         <label for="author">Auteur</label>
