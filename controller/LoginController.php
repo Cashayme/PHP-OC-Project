@@ -10,10 +10,12 @@ class LoginController
 		$reslt = $loginManager->getLogin();
 		
 		if ($reslt == 'login') {
-			require('view/template-admin.php');
+			require('view/indexViewAdmin.php');
+			return 'Access';
 		}
 		else {
-			throw new Exception("NO NO NO");
+			echo "Tu n'est pas autorisé à voir cette page";
+			return 'Access denied';
 			
 		}
 	}

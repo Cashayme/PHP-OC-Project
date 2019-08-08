@@ -31,6 +31,6 @@ class LoginManager extends Manager
 
                 throw new Exception("Ce compte n'existe pas");
             }
-        }
+        } 
     }
 }

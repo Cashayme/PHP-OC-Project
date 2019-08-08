@@ -34,11 +34,14 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        elseif ($_GET['action'] == 'admin') {
+            $loginController->checkLogin();
+            
+            if ($loginController->checkLogin() == 'Access') {
+                $postController->listPostsAdmin();
+            }
+        }
         
-    }
-    elseif (isset($_POST['email'])) {
-        	
-        	$loginController->checkLogin();
     }
     else {
     	$postController->listPosts();

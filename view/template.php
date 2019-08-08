@@ -28,8 +28,7 @@
                   <li class="nav-item connexion">
                      <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLoginForm" > <i class="fas fa-user"></i> Connexion</a>
                   </li>
-                 
-                  <form method="post" action="index.php" class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                  <form method="post" action="index.php?action=admin" class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
                      <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -39,23 +38,23 @@
                               <span aria-hidden="true">&times;</span>
                               </button>
                            </div>
-                              <div class="modal-body mx-3">
-                                 <div class="md-form mb-5">
-                                    <i class="fas fa-envelope prefix grey-text"></i>
-                                    <input type="email" id="email" name="email" class="form-control validate">
-                                    <label data-error="Incorrect" data-success="Valide" for="defaultForm-email">Email</label>
-                                 </div>
-                                 <div class="md-form mb-4">
-                                    <i class="fas fa-lock prefix grey-text"></i>
-                                    <input type="password" id="password" name="password" class="form-control validate">
-                                    <label for="defaultForm-pass">Mot de passe</label>
-                                 </div>
+                           <div class="modal-body mx-3">
+                              <div class="md-form mb-5">
+                                 <i class="fas fa-envelope prefix grey-text"></i>
+                                 <input type="email" id="email" name="email" class="form-control validate">
+                                 <label data-error="Incorrect" data-success="Valide" for="defaultForm-email">Email</label>
                               </div>
-                              <div class="modal-footer d-flex justify-content-center">
-                                 <input type="submit" value="Accéder au panneau d'adminstration" class="btn btn-primary waves-effect waves-light">
+                              <div class="md-form mb-4">
+                                 <i class="fas fa-lock prefix grey-text"></i>
+                                 <input type="password" id="password" name="password" class="form-control validate">
+                                 <label for="defaultForm-pass">Mot de passe</label>
                               </div>
-                        </form>
-                     </div>
+                           </div>
+                           <div class="modal-footer d-flex justify-content-center">
+                              <input type="submit" value="Accéder au panneau d'adminstration" class="btn btn-primary waves-effect waves-light">
+                           </div>
+                  </form>
+                  </div>
                   </div>
                </ul>
             </nav>

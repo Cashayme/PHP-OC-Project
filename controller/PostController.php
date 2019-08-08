@@ -12,6 +12,14 @@ class PostController
 		require('view/indexView.php');
 	}
 
+		public function listPostsAdmin()
+	{
+		$postManager = new PostManager();
+		$posts = $postManager->getPosts();
+
+		require('view/indexViewAdmin.php');
+	}
+
 	public function post()
 	{
 		$postManager = new PostManager();
