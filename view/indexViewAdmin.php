@@ -6,8 +6,8 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0 text-dark">Starter Page</h1>
-              <a href="#" class="btn btn-primary mt-2"><i class="fas fa-plus-square mr-2"></i> Créer un nouvel article</a>
+            <h1 class="m-0 text-dark">Articles</h1>
+              <a href="index.php?action=newPost" class="btn btn-primary mt-2"><i class="fas fa-plus-square mr-2"></i> Créer un nouvel article</a>
             
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -25,16 +25,14 @@
             while ($data = $posts->fetch()) 
             {
             ?>
-            <div class="card">
+            <div class="card col-lg-5 m-3">
               <div class="card-header">
-                <h5 class="m-0">Featured</h5>
+                <h5 class="m-0"><?= $data['title'] ?></h5>
               </div>
               <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary"><i class="far fa-edit"></i> Editer</a>
-                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
+                <p class="card-text"><?= $data['description'] ?></p>
+                <a href="index.php?action=editPost&amp;id=<?= $data['id'] ?>" class="btn btn-primary"><i class="far fa-edit"></i> Editer</a>
+                <a href="index.php?action=delPost&amp;id=<?= $data['id'] ?>" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
               </div>
             </div>
             <?php

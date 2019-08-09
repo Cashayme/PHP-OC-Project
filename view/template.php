@@ -26,7 +26,13 @@
                      </a>
                   </li>
                   <li class="nav-item connexion">
-                     <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLoginForm" > <i class="fas fa-user"></i> Connexion</a>
+                     <?php 
+                        if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
+                           echo '<a class="nav-link" href="index.php?action=admin"><i class="fas fa-cogs"></i> Panneau d\'administration</a>';
+                        } else {
+                           echo '<a class="nav-link" href="#" data-toggle="modal" data-target="#modalLoginForm" > <i class="fas fa-user"></i> Connexion</a>';
+                        }
+                     ?>
                   </li>
                   <form method="post" action="index.php?action=admin" class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
@@ -41,7 +47,11 @@
                            <div class="modal-body mx-3">
                               <div class="md-form mb-5">
                                  <i class="fas fa-envelope prefix grey-text"></i>
-                                 <input type="email" id="email" name="email" class="form-control validate">
+                                 <input type="email" id="email" name="email" class="form-control validate" value="
+                                 <?php if(isset($_SESSION['email'])){
+                                          echo $_SESSION['email'];
+                                          }
+                                 ?>">
                                  <label data-error="Incorrect" data-success="Valide" for="defaultForm-email">Email</label>
                               </div>
                               <div class="md-form mb-4">

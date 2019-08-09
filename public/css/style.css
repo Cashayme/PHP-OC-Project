@@ -136,3 +136,5 @@ a:hover {
 	margin: 0 5px 1px 42px!important;
 	color: black!important;
 }
+
+strong { font-weight: bold; }

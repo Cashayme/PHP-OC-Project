@@ -34,7 +34,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="index.php?action=admin" class="brand-link">
       <span class="brand-text font-weight-light">Panneau d'administration</span>
     </a>
 
@@ -134,5 +134,6 @@
 <script src="public/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="public/js/adminlte.min.js"></script>
+<script src="public/js/js.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ class CommentController
 		$commentManager = new CommentManager();
 
 		$affectedLines = $commentManager->postComment($postId, $author, $comment);
-
+		
 		if ($affectedLines === false) {
 			throw new Exception('Impossible d\'ajouter le commentaire !');
 		}

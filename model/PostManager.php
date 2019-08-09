@@ -20,4 +20,41 @@ class PostManager extends Manager
 
         return $post;
     }
+
+	public function sendPost($title, $content, $picture, $description )
+	{
+        $db = $this->dbConnect();
+        $newpost = $db->prepare('INSERT INTO billets(title, content, picture, description ) VALUES(?, ?, ?, ?)');
+        $affectedLines = $newpost->execute(array($title, $content, $picture, $description));
+
+        return $affectedLines;
+		
+	}
+
+	public function deletePost($id) {
+		$db = $this->dbConnect();
+		$deletePost = $db->prepare('DELETE FROM billets WHERE id= ?');
+		$affectedLines = $deletePost->execute(array($id));
+
+		return $affectedLines;
+	}
+
+	public function editingPost($id) {
+		$db = $this->dbConnect();
+		$req = $db->prepare('SELECT * FROM billets WHERE id = ?');
+		$req->execute(array($id));
+        $infos = $req->fetch();
+
+        return $infos;
+	}
+
+		public function updateEdit($id, $title, $content, $picture, $description )
+	{
+        $db = $this->dbConnect();
+        $editPost = $db->prepare('UPDATE billets SET title = $title, content = $content, picture = $picture, description = $description WHERE id= $id');
+        $affectedLines = $editPost->execute(array($title, $content, $picture, $description));
+
+        return $affectedLines;
+		
+	}
 }

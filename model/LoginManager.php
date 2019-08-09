@@ -4,11 +4,9 @@ require_once('model/Manager.php');
 
 class LoginManager extends Manager
 {	
-	public function getLogin()
+	public function getLogin($email, $password)
 	{
 		$db = $this->dbConnect();
-		$email = $_POST['email'];
-		$password = $_POST['password'];
 
         if(strlen($email) > 0 && strlen($password) > 0){
 
