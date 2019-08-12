@@ -48,11 +48,10 @@ class PostManager extends Manager
         return $infos;
 	}
 
-		public function updateEdit($id, $title, $content, $picture, $description )
-	{
+	public function updateEdit($id, $title, $content, $picture, $description ) {
         $db = $this->dbConnect();
-        $editPost = $db->prepare('UPDATE billets SET title = $title, content = $content, picture = $picture, description = $description WHERE id= $id');
-        $affectedLines = $editPost->execute(array($title, $content, $picture, $description));
+        $editPost = $db->prepare('UPDATE billets SET title = ?, content = ?, picture = ?, description = ? WHERE id= ?');
+        $affectedLines = $editPost->execute(array($title, $content, $picture, $description, $id));
 
         return $affectedLines;
 		

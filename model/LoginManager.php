@@ -25,9 +25,6 @@ class LoginManager extends Manager
 
                     return 'invalid user';
                 }
-            }else{
-
-                throw new Exception("Ce compte n'existe pas");
             }
         } 
     }

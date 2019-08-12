@@ -14,9 +14,7 @@ class LoginController
 			require('view/indexViewAdmin.php');
 		}
 		else {
-			echo "Tu n'es pas autorisé à voir cette page";
 			return 'Access denied';
-			
 		}
 	}
 }

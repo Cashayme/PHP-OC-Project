@@ -12,6 +12,15 @@
       <div class="bg-image"></div>
       <div class="container-fluid">
          <header class="row">
+            <?php 
+               if (isset($badLogin)) {
+                  echo '<div class="alert alert-danger" id="danger-alert" >
+                           <button type="button" class="close" data-dismiss="alert">x</button>
+                           <strong>Désolé ! </strong>
+                           Ce compte n\'existe pas.
+                        </div>';
+               }
+            ?>
             <nav class="navbar navbar-expand-lg navbar-dark col-12">
                <a class="navbar-brand d-none d-lg-block" href="">Billet simple pour l'Alaska</a>
                <ul class="navbar-nav mr-auto">
@@ -34,7 +43,7 @@
                         }
                      ?>
                   </li>
-                  <form method="post" action="index.php?action=admin" class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                <form method="post" action="index.php?action=admin" class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
                      <div class="modal-dialog" role="document">
                         <div class="modal-content">

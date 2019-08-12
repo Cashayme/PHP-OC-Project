@@ -138,3 +138,11 @@ a:hover {
 }
 
 strong { font-weight: bold; }
+
+.alert-danger {
+    position: fixed;
+    z-index: 1000;
+    right: 9px;
+    top: 4px;
+    box-shadow: 2px 1px 5px #0000008f;
+}

@@ -56,15 +56,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                <a href="index.php?action=admin" class="nav-link">
+                  <i class="fa fa-list nav-icon"></i>
+                  <p>Tous les articles</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                <a href="index.php?action=newPost" class="nav-link">
+                  <i class="far fa-plus-square nav-icon"></i>
+                  <p>Créer un nouvel article</p>
                 </a>
               </li>
             </ul>
@@ -80,15 +80,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                <a href="#" class="nav-link">
+                  <i class="fas fa-comments nav-icon"></i>
+                  <p>Tous les commentaires</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <i class="fas fa-exclamation-circle nav-icon"></i>
+                  <p>Commentaires signalés</p>
                 </a>
               </li>
             </ul>
