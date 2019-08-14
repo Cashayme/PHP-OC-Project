@@ -33,6 +33,13 @@ class PostManager extends Manager
 
 	public function deletePost($id) {
 		$db = $this->dbConnect();
+
+		$req = $db->prepare('SELECT * FROM billets WHERE id = ?');
+		$req->execute(array($id));
+        $infos = $req->fetch();
+
+        unlink($infos['picture']);
+
 		$deletePost = $db->prepare('DELETE FROM billets WHERE id= ?');
 		$affectedLines = $deletePost->execute(array($id));
 

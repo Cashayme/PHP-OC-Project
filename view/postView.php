@@ -11,7 +11,28 @@
     while ($comment = $comments->fetch()) {
     ?>
         <p class="text-container col-11">
-            <strong><?= htmlspecialchars($comment['author']) ?></strong><br><a href="#" title="Signaler ce commentaire"><i class="fas fa-exclamation-circle" data-toggle="tooltip" data-placement="top" title="Signaler ce commentaire"></i></a>
+            <strong><?= htmlspecialchars($comment['author']) ?></strong><br>
+            <a href="
+            <?php
+            if($comment['reported'] == null) {
+              echo 'index.php?action=reportComment&amp;id='.$comment["id"].'&amp;p_id= '.  $comment["post_id"] .' ';
+            } else { 
+                echo "#title-comments"; } 
+            ?>
+            " title="Signaler ce commentaire">
+            <i class="fas fa-exclamation-circle 
+            <?php
+            if($comment['reported'] != null) {
+                echo "text-muted"; } 
+            ?>
+            " data-toggle="tooltip" data-placement="top" title="
+            <?php
+            if($comment['reported'] != null) {
+                echo "Ce commentaire a déjà été signalé et est en cours de traitement par le modérateur"; 
+            } else { 
+                echo "Signaler ce commentaire"; } 
+            ?>
+            "></i></a>
             <?= htmlspecialchars($comment['comment']) ?>
             <i class="com-date"><?= $comment['comment_date_fr'] ?></i>
         </p>

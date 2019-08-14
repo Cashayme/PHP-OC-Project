@@ -4,10 +4,14 @@ session_start();
 
 require('controller/CommentController.php');
 require('controller/PostController.php');
+require('controller/backoffice/AdminPostController.php');
+require('controller/backoffice/AdminCommentController.php');
 require('controller/LoginController.php');
 
 $postController = new PostController();
+$adminPostController = new AdminPostController();
 $commentController = new CommentController();
+$adminCommentController = new AdminCommentController();
 $loginController = new LoginController();
 
 
@@ -39,51 +43,78 @@ try {
         }
         elseif ($_GET['action'] == 'admin') {
 
-            if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-
-                if ($loginController->checkLogin($email, $password) == 'Access') {
-                    $postController->listPostsAdmin();
-                    $_SESSION['email'] = $email;
-                    $_SESSION['password'] = $password;
-                } else {
-                    throw new Exception("Identifants invalides");
-                    
-                }
-            } 
-            elseif (isset($_SESSION['email']) && isset($_SESSION['password'])) {
-                if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
-                    $postController->listPostsAdmin();
+            if (isset($_POST['email']) && isset($_POST['password'])) {
+                if ($loginController->checkLogin($_POST['email'], $_POST['password']) == 'Access') {
+                    $adminPostController->listPostsAdmin();
                 } 
+            }
+            elseif ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
+                $adminPostController->listPostsAdmin();
             }
         }
         elseif ($_GET['action'] == 'newPost') {
-            $postController->newPost();
+            $adminPostController->newPost();
         }
         elseif ($_GET['action'] == 'addPost') {
             if (!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['content'])) {
                 $tmp_file = $_FILES['picture']['tmp_name'];
 
-                $postController->addPost($_POST['title'], $_POST['content'], $tmp_file, $_POST['description']);
+                $adminPostController->addPost($_POST['title'], $_POST['content'], $tmp_file, $_POST['description']);
             }else{
                     throw new Exception('Tous les champs ne sont pas remplis !');
             }
         }
         elseif ($_GET['action'] == 'delPost') {
             if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
-                $postController->delPost($_GET['id']);
+                $adminPostController->delPost($_GET['id']);
             } else {
                 echo "Tu n'es pas autorisé à faire ça.";
             }    
         }
         elseif ($_GET['action'] == 'editPost') {
-            $postController->editPost($_GET['id']);
+            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
+                $adminPostController->editPost($_GET['id']);
+            } else {
+                echo "Tu n'es pas autorisé à faire ça.";
+            }
         }
         elseif ($_GET['action'] == 'updatePost') {
-            $tmp_file = $_FILES['picture']['tmp_name'];
-
-            $postController->updatePost($_GET['id'], $_POST['title'], $_POST['content'], $tmp_file, $_POST['description']);
+            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
+                $adminPostController->updatePost($_GET['id'], $_POST['title'], $_POST['content'], $_FILES['picture']['tmp_name'], $_POST['description']);                
+            } else {
+                echo "Tu n'es pas autorisé à faire ça.";
+            }
+        }
+        elseif ($_GET['action'] == 'listComment') {
+            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
+                $adminCommentController->listComment();
+            } else {
+                echo "Tu n'es pas autorisé à faire ça.";
+            }
+        }
+        elseif ($_GET['action'] == 'reportedComment') {
+            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
+                $adminCommentController->listComment();
+            } else {
+                echo "Tu n'es pas autorisé à faire ça.";
+            }
+        }
+        elseif ($_GET['action'] == 'delComment') {
+            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
+                $adminCommentController->delComment($_GET['id']);
+            } else {
+                echo "Tu n'es pas autorisé à faire ça.";
+            }
+        }
+        elseif ($_GET['action'] == 'revokeComment') {
+            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
+                $adminCommentController->revokeComment($_GET['id']);
+            } else {
+                echo "Tu n'es pas autorisé à faire ça.";
+            }
+        }
+        elseif ($_GET['action'] == 'reportComment') {
+            $commentController->reportComment($_GET['id'], $_GET['p_id']);
         }
     }
     else {

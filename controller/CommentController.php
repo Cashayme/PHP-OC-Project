@@ -17,4 +17,18 @@ class CommentController
 			header('Location: index.php?action=post&id=' . $postId);
 		}
 	}
+
+	public function reportComment($id, $postId)
+	{
+		$commentManager = new CommentManager();
+
+		$affectedLines = $commentManager->preventComment($id);
+
+		if ($affectedLines === false) {
+			throw new Exception('Impossible de signaler le commentaire !');
+		}
+		else {
+			header('Location: index.php?action=post&id='. $postId .'#title-comments');
+		}
+	}
 }

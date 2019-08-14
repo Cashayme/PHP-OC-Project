@@ -10,9 +10,9 @@ class LoginManager extends Manager
 
         if(strlen($email) > 0 && strlen($password) > 0){
 
-            $stmt = $db->prepare("SELECT * FROM user WHERE email='$email'");
+            $stmt = $db->prepare("SELECT * FROM user WHERE email= ?");
 			
-            $stmt->execute();
+            $stmt->execute(array($email));
             $results = $stmt->fetch();
 
             if($results){

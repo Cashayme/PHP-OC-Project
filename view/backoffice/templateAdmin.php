@@ -80,13 +80,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="index.php?action=listComment" class="nav-link">
                   <i class="fas fa-comments nav-icon"></i>
                   <p>Tous les commentaires</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="index.php?action=reportedComment" class="nav-link">
                   <i class="fas fa-exclamation-circle nav-icon"></i>
                   <p>Commentaires signalés</p>
                 </a>
