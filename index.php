@@ -6,13 +6,9 @@ require('controller/CommentController.php');
 require('controller/PostController.php');
 require('controller/backoffice/AdminPostController.php');
 require('controller/backoffice/AdminCommentController.php');
-require('controller/LoginController.php');
 
 $postController = new PostController();
 $commentController = new CommentController();
-$loginController = new LoginController();
-
-var_dump($_SESSION['email']);
 
 
 try {
@@ -42,7 +38,6 @@ try {
             }
         }
         elseif ($_GET['action'] == 'admin') {
-
             if (isset($_POST['email']) && isset($_POST['password'])) {
                 $adminPostController = new AdminPostController($_POST['email'], $_POST['password']);
                 $adminPostController->listPostsAdmin();
@@ -101,9 +96,15 @@ try {
         elseif ($_GET['action'] == 'reportComment') {
             $commentController->reportComment($_GET['id'], $_GET['p_id']);
         }
-        elseif ($_GET['action'] == 'notAuthorized') {
+        elseif ($_GET['action'] == 'notAuthorized') 
+        {
             $_SESSION["notify"] = "not-authorized";
             $postController->listPosts();
+        } 
+        elseif ($_GET['action'] == 'disconnect') 
+        {
+            session_destroy();
+            header('Location: index.php');
         }
     }
     else {

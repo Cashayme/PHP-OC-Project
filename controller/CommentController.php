@@ -5,7 +5,7 @@ require_once('model/CommentManager.php');
 class CommentController
 {
 	public function addComment($postId, $author, $comment)
-	{
+	{//Ajoute un commentaire
 		$commentManager = new CommentManager();
 
 		$affectedLines = $commentManager->postComment($postId, $author, $comment);
@@ -20,7 +20,7 @@ class CommentController
 	}
 
 	public function reportComment($id, $postId)
-	{
+	{//Signale un commentaire
 		$commentManager = new CommentManager();
 
 		$affectedLines = $commentManager->preventComment($id);

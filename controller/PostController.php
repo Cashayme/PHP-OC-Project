@@ -5,7 +5,7 @@ require_once('model/PostManager.php');
 class PostController
 {
 	public function listPosts()
-	{
+	{//Affiche les articles
 		$postManager = new PostManager();
 		$posts = $postManager->getPosts();
 
@@ -13,7 +13,7 @@ class PostController
 	}
 
 	public function post()
-	{
+	{//Affiche un article
 		$postManager = new PostManager();
 		$commentManager = new CommentManager();
 

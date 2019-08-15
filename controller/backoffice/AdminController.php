@@ -9,13 +9,13 @@ class AdminController
 		$loginManager = new LoginManager();
 
 		if (!isset($_SESSION['email']) && !isset($_SESSION['password']) && $loginManager->getLogin($email, $password) == 'login') 
-			{//Si il n'y a pas de session d'identification et que les id envoyés en paramètres sont bons, on les enregistre dans la session
+			{//Si il n'y a pas de session d'identification et que les id envoyés en paramètres sont bons, on les enregistre dans la session et on se connecte
 			$_SESSION['email'] = $email;
 			$_SESSION['password'] = $password;
 			$reslt = $loginManager->getLogin($email, $password);
 		} 
 		elseif (isset($_SESSION['email']) && isset($_SESSION['password']) && $loginManager->getLogin($_SESSION['email'], $_SESSION['password']) == 'login') 
-			{//Mais si une session d'identification existe et que les id sont bons
+			{ //Mais si une session d'identification existe et que les id sont bons, on se connecte avec
 			$reslt = $loginManager->getLogin($_SESSION['email'], $_SESSION['password']);
 		} else {
 			header('Location: index.php?action=notAuthorized');

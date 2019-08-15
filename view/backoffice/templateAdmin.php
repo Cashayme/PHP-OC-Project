@@ -7,18 +7,14 @@
 
   <title>Panneau d'administration - Jean Forteroche</title>
 
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <!-- Theme style -->
   <link rel="stylesheet" href="public/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="public/css/adminstyle.css">
   <link rel="stylesheet" type="text/css" href="public/css/toastr.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-  <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -30,23 +26,16 @@
       </li>
     </ul>
   </nav>
-  <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
     <a href="index.php?action=admin" class="brand-link">
       <span class="brand-text font-weight-light">Panneau d'administration</span>
     </a>
 
-    <!-- Sidebar -->
     <div class="sidebar">
 
-      <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
@@ -93,47 +82,36 @@
                 </a>
               </li>
             </ul>
+            <hr>
+            <a href="index.php?action=disconnect">
+              <p class="ml-4"><i class="fas fa-sign-out-alt"></i>Se déconnecter</p>
+            </a>
           </li>
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
   
   <?= $content ?>
 
-  <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
     <div class="p-3">
       <h5>Title</h5>
       <p>Sidebar content</p>
     </div>
   </aside>
-  <!-- /.control-sidebar -->
 
-  <!-- Main Footer -->
   <footer class="main-footer">
-    <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
       Billet simple pour l'Alaska
     </div>
-    <!-- Default to the left -->
     <strong>Copyright &copy; 2019 Jean Forteroche</strong> Tous droits réservés.
   </footer>
 </div>
-<!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
 <script src="public/js/jquery-3.4.1.min.js"></script>
-<!-- Bootstrap 4 -->
 <script src="public/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
 <script src="public/js/adminlte.min.js"></script>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
 <script>tinymce.init({selector:'textarea'});</script>
@@ -161,6 +139,10 @@
     } elseif ($_SESSION["notify"] == "revoked-comment") {
       echo '<script type="text/javascript">
               toastr["info"]("Le commentaire a été révoqué", "Action effectuée");
+            </script>';
+    } elseif ($_SESSION["notify"] == "edited-post") {
+      echo '<script type="text/javascript">
+              toastr["success"]("L\'article a été édité", "Succès !");
             </script>';
     }
     $_SESSION["telltale"] = "1";
