@@ -1,18 +1,18 @@
 <?php
-
+require_once('controller/backoffice/AdminController.php');
 require_once('model/CommentManager.php');
 
-class AdminCommentController
+class AdminCommentController extends AdminController
 {
 	public function listComment() 
-	{
+	{//Affiche la liste des commentaires
 		$commentManager = new CommentManager();
 		$comments = $commentManager->adminComments();
 		require('view/backoffice/adminCommentView.php');
 	}
 
 	public function delComment($id) 
-	{
+	{//Supprime le commentaire
 		$commentManager = new CommentManager();
 		$affectedLines = $commentManager->deleteComment($id);
 
@@ -26,7 +26,7 @@ class AdminCommentController
 	}
 
 		public function revokeComment($id)
-	{
+	{//Révoque le commentaire signalé
 		$commentManager = new CommentManager();
 
 		$affectedLines = $commentManager->revComment($id);

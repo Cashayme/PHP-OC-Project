@@ -106,6 +106,10 @@
             echo '<script type="text/javascript">
             toastr["error"]("Cet article n\'existe pas", "Désolé !");
             </script>';
+         } elseif ($_SESSION["notify"] == "not-authorized") {
+            echo '<script type="text/javascript">
+            toastr["error"]("Vous n\'êtes pas autorisé à faire ça", "Désolé !");
+            </script>';
          }               
          $_SESSION["telltale"] = "1";
       }

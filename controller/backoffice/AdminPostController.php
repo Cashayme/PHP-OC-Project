@@ -1,8 +1,8 @@
 <?php
-
+require_once('controller/backoffice/AdminController.php');
 require_once('model/PostManager.php');
 
-class AdminPostController
+class AdminPostController extends AdminController
 {
 	public function listPostsAdmin()
 	{

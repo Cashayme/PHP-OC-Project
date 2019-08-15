@@ -9,10 +9,10 @@ require('controller/backoffice/AdminCommentController.php');
 require('controller/LoginController.php');
 
 $postController = new PostController();
-$adminPostController = new AdminPostController();
 $commentController = new CommentController();
-$adminCommentController = new AdminCommentController();
 $loginController = new LoginController();
+
+var_dump($_SESSION['email']);
 
 
 try {
@@ -44,20 +44,21 @@ try {
         elseif ($_GET['action'] == 'admin') {
 
             if (isset($_POST['email']) && isset($_POST['password'])) {
-                if ($loginController->checkLogin($_POST['email'], $_POST['password']) == 'Access') {
-                    $adminPostController->listPostsAdmin();
-                } 
-            }
-            elseif ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
+                $adminPostController = new AdminPostController($_POST['email'], $_POST['password']);
+                $adminPostController->listPostsAdmin();
+            } else {
+                $adminPostController = new AdminPostController($_SESSION['email'], $_SESSION['password']);
                 $adminPostController->listPostsAdmin();
             }
         }
         elseif ($_GET['action'] == 'newPost') {
+            $adminPostController = new AdminPostController($_SESSION['email'], $_SESSION['password']);
             $adminPostController->newPost();
         }
         elseif ($_GET['action'] == 'addPost') {
+            
             if (!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['content'] && !empty($_FILES['picture']['tmp_name']))) {
-
+                $adminPostController = new AdminPostController($_SESSION['email'], $_SESSION['password']);
                 $adminPostController->addPost($_POST['title'], $_POST['content'], $_FILES['picture']['tmp_name'], $_POST['description']);
             }else{
                 $_SESSION["notify"] = "incomplete-post";
@@ -65,61 +66,44 @@ try {
             }
         }
         elseif ($_GET['action'] == 'delPost') {
-            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
-                $adminPostController->delPost($_GET['id']);
-            } else {
-                echo "Tu n'es pas autorisé à faire ça.";
-            }    
+            $adminPostController = new AdminPostController($_SESSION['email'], $_SESSION['password']);
+            $adminPostController->delPost($_GET['id']);   
         }
         elseif ($_GET['action'] == 'editPost') {
-            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
-                $adminPostController->editPost($_GET['id']);
-            } else {
-                echo "Tu n'es pas autorisé à faire ça.";
-            }
+            $adminPostController = new AdminPostController($_SESSION['email'], $_SESSION['password']);
+            $adminPostController->editPost($_GET['id']);
         }
         elseif ($_GET['action'] == 'updatePost') {
-            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
-                if (!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['content'])) {
-                    $adminPostController->updatePost($_GET['id'], $_POST['title'], $_POST['content'], $_FILES['picture']['tmp_name'], $_POST['description']);
-                }else{
-                    $_SESSION["notify"] = "incomplete-post";
-                    header('Location: index.php?action=admin');
-                }                
-            } else {
-                echo "Tu n'es pas autorisé à faire ça.";
-            }
+            $adminPostController = new AdminPostController($_SESSION['email'], $_SESSION['password']);
+            if (!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['content'])) {
+                $adminPostController->updatePost($_GET['id'], $_POST['title'], $_POST['content'], $_FILES['picture']['tmp_name'], $_POST['description']);
+            }else{
+                $_SESSION["notify"] = "incomplete-post";
+                header('Location: index.php?action=admin');
+            }                
         }
         elseif ($_GET['action'] == 'listComment') {
-            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
-                $adminCommentController->listComment();
-            } else {
-                echo "Tu n'es pas autorisé à faire ça.";
-            }
+            $adminCommentController = new AdminCommentController($_SESSION['email'], $_SESSION['password']);
+            $adminCommentController->listComment();
         }
         elseif ($_GET['action'] == 'reportedComment') {
-            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
-                $adminCommentController->listComment();
-            } else {
-                echo "Tu n'es pas autorisé à faire ça.";
-            }
+            $adminCommentController = new AdminCommentController($_SESSION['email'], $_SESSION['password']);
+            $adminCommentController->listComment();
         }
         elseif ($_GET['action'] == 'delComment') {
-            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
-                $adminCommentController->delComment($_GET['id']);
-            } else {
-                echo "Tu n'es pas autorisé à faire ça.";
-            }
+            $adminCommentController = new AdminCommentController($_SESSION['email'], $_SESSION['password']);
+            $adminCommentController->delComment($_GET['id']);
         }
         elseif ($_GET['action'] == 'revokeComment') {
-            if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
-                $adminCommentController->revokeComment($_GET['id']);
-            } else {
-                echo "Tu n'es pas autorisé à faire ça.";
-            }
+            $adminCommentController = new AdminCommentController($_SESSION['email'], $_SESSION['password']);
+            $adminCommentController->revokeComment($_GET['id']);
         }
         elseif ($_GET['action'] == 'reportComment') {
             $commentController->reportComment($_GET['id'], $_GET['p_id']);
+        }
+        elseif ($_GET['action'] == 'notAuthorized') {
+            $_SESSION["notify"] = "not-authorized";
+            $postController->listPosts();
         }
     }
     else {
