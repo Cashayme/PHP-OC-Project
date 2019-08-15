@@ -50,7 +50,7 @@
               </div>
               <div class="form-group">
                   <label for="content">Contenu de l'article</label>
-                  <textarea class="form-control" id="content" name="content" rows="3" placeholder="Rédiger l'article..."><?php 
+                  <textarea class="form-control" id="content" name="content" rows="6" placeholder="Rédiger l'article..."><?php 
                   if (isset($editPost)) {
                     echo ''. $editPost["content"] .'';
                   }

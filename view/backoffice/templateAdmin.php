@@ -12,11 +12,12 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="public/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="public/css/adminstyle.css">
+  <link rel="stylesheet" type="text/css" href="public/css/toastr.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -134,6 +135,40 @@
 <script src="public/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="public/js/adminlte.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+<script>tinymce.init({selector:'textarea'});</script>
+<script type="text/javascript" src="public/js/toastr.js"></script>
 <script src="public/js/js.js"></script>
+
+  <?php 
+  if (isset($_SESSION["notify"])) {
+    if ($_SESSION["notify"] == "newpost") {
+      echo '<script type="text/javascript">
+              toastr["success"]("Votre article a été posté", "Succès !");
+            </script>';
+    } elseif ($_SESSION["notify"] == "incomplete-post") {
+      echo '<script type="text/javascript">
+              toastr["error"]("Tous les champs ne sont pas remplis", "Impossible de poster/éditer l\'article");
+            </script>';
+    } elseif ($_SESSION["notify"] == "throwed-post") {
+      echo '<script type="text/javascript">
+              toastr["info"]("L\'article a été supprimé", "Action effectuée");
+            </script>';
+    } elseif ($_SESSION["notify"] == "deleted-comment") {
+      echo '<script type="text/javascript">
+              toastr["info"]("Le commentaire a été supprimé", "Action effectuée");
+            </script>';
+    } elseif ($_SESSION["notify"] == "revoked-comment") {
+      echo '<script type="text/javascript">
+              toastr["info"]("Le commentaire a été révoqué", "Action effectuée");
+            </script>';
+    }
+    $_SESSION["telltale"] = "1";
+  } 
+
+  if (isset($_SESSION["telltale"])) {
+    unset($_SESSION["notify"]);
+  }
+  ?>
 </body>
 </html>

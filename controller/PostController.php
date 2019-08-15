@@ -20,7 +20,14 @@ class PostController
 		$post = $postManager->getPost($_GET['id']);
 		$comments = $commentManager->getComments($_GET['id']);
 
-		require('view/postView.php');
+		if ($post === false) {
+			$_SESSION["notify"] = "wrong-post";
+			header('Location: index.php');
+		}
+		else {
+			require('view/postView.php');
+		}
+
 	}
 }
 

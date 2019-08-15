@@ -8,7 +8,7 @@ body {
 .navbar { background-color: #1f4c72; }
 
 .bg-image {
-	background-image: url(http://yesofcorsa.com/wp-content/uploads/2017/11/4K-Alaska-Photo-Download.jpg);
+	background-image: url(../media/4K-Alaska-Photo-Download.jpg);
 	filter: blur(0.5rem);
 	height: 100%;
 	width: 100%;

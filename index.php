@@ -56,12 +56,12 @@ try {
             $adminPostController->newPost();
         }
         elseif ($_GET['action'] == 'addPost') {
-            if (!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['content'])) {
-                $tmp_file = $_FILES['picture']['tmp_name'];
+            if (!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['content'] && !empty($_FILES['picture']['tmp_name']))) {
 
-                $adminPostController->addPost($_POST['title'], $_POST['content'], $tmp_file, $_POST['description']);
+                $adminPostController->addPost($_POST['title'], $_POST['content'], $_FILES['picture']['tmp_name'], $_POST['description']);
             }else{
-                    throw new Exception('Tous les champs ne sont pas remplis !');
+                $_SESSION["notify"] = "incomplete-post";
+                header('Location: index.php?action=newPost');
             }
         }
         elseif ($_GET['action'] == 'delPost') {
@@ -80,7 +80,12 @@ try {
         }
         elseif ($_GET['action'] == 'updatePost') {
             if ($loginController->checkLogin($_SESSION['email'], $_SESSION['password']) == 'Access') {
-                $adminPostController->updatePost($_GET['id'], $_POST['title'], $_POST['content'], $_FILES['picture']['tmp_name'], $_POST['description']);                
+                if (!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['content'])) {
+                    $adminPostController->updatePost($_GET['id'], $_POST['title'], $_POST['content'], $_FILES['picture']['tmp_name'], $_POST['description']);
+                }else{
+                    $_SESSION["notify"] = "incomplete-post";
+                    header('Location: index.php?action=admin');
+                }                
             } else {
                 echo "Tu n'es pas autorisé à faire ça.";
             }

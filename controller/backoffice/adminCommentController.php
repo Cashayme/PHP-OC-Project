@@ -20,6 +20,7 @@ class AdminCommentController
 			throw new Exception('Impossible de supprimer le commentaire !');
 		}
 		else {
+			$_SESSION["notify"] = "deleted-comment";
 			header('Location: index.php?action=listComment');
 		}
 	}
@@ -34,6 +35,7 @@ class AdminCommentController
 			throw new Exception('Impossible de révoquer le commentaire !');
 		}
 		else {
+			$_SESSION["notify"] = "revoked-comment";
 			header('Location: index.php?action=reportedComment');
 		}
 	}

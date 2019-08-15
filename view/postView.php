@@ -3,7 +3,7 @@
 <div class="container jumbotron jumbotron-fluid col-lg-8 col-md-12 col-sm-12 col-xs-12 d-flex flex-wrap justify-content-center ">
     <h1 class="display-4 card-header col-12 text-center"> <a id="back" href="index.php"><i class="fas fa-arrow-left"></i></a> <?= $post['title'] ?> </h1>
     <img src=" <?= $post['picture'] ?> " alt="Illustration du chapitre" class="pic-container">
-    <p class="text-container"> <?= $post['content'] ?> </p>
+    <div class="text-container"> <?= $post['content'] ?> </div>
 
     <h3 id="title-comments">Commentaires</h3>
 

@@ -16,9 +16,9 @@ class LoginController
 		elseif (isset($_SESSION['email']) && isset($_SESSION['password']) && $loginManager->getLogin($_SESSION['email'], $_SESSION['password']) == 'login') {
 			$reslt = $loginManager->getLogin($_SESSION['email'], $_SESSION['password']);
 		} else {
-			throw new Exception("Identifants invalides");
+			$_SESSION["notify"] = "wrong-user";
+			header('Location: index.php');
 		}
-	
 
 		if ($reslt == 'login') {
 			return 'Access';

@@ -48,6 +48,7 @@ class AdminPostController
 			throw new Exception('Impossible d\'ajouter l\'article !');
 		}
 		else {
+			$_SESSION["notify"] = "newpost";
 			header('Location: index.php?action=admin');
 		}
 	}
@@ -61,6 +62,7 @@ class AdminPostController
 			throw new Exception('Cet article n\'existe pas.');
 		}
 		else {
+			$_SESSION["notify"] = "throwed-post";
 			header('Location: index.php?action=admin');
 		}
 	}

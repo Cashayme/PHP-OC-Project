@@ -4,6 +4,7 @@
       <title>Billet simple pour l'Alaska - Jean Forteroche</title>
       <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="public/css/mdb.min.css">
+      <link rel="stylesheet" type="text/css" href="public/css/toastr.css">
       <link rel="stylesheet" type="text/css" href="public/css/style.css">
       <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -12,15 +13,6 @@
       <div class="bg-image"></div>
       <div class="container-fluid">
          <header class="row">
-            <?php 
-               if (isset($badLogin)) {
-                  echo '<div class="alert alert-danger" id="danger-alert" >
-                           <button type="button" class="close" data-dismiss="alert">x</button>
-                           <strong>Désolé ! </strong>
-                           Ce compte n\'existe pas.
-                        </div>';
-               }
-            ?>
             <nav class="navbar navbar-expand-lg navbar-dark col-12">
                <a class="navbar-brand d-none d-lg-block" href="">Billet simple pour l'Alaska</a>
                <ul class="navbar-nav mr-auto">
@@ -81,18 +73,45 @@
          <?= $content ?>
          <footer class="row">
             <div id="footer" class="col-12 d-flex flex-row">
-               <div class="col-4 footer-content">
+               <div class="col-4 footer-content pt-3">
                   <a href="">Contacter l'auteur</a>
                </div>
-               <div class="col-4 footer-content">Mentions légales</div>
-               <div class="col-4 footer-content">Réseaux sociaux</div>
+               <div class="col-4 footer-content pt-3">Mentions légales</div>
+               <div class="col-4 footer-content pt-3">Réseaux sociaux</div>
             </div>
          </footer>
       </div>
       <script type="text/javascript" src="public/js/jquery-3.4.1.min.js"></script>
       <script type="text/javascript" src="public/js/mdb.min.js"></script>
       <script type="text/javascript" src="public/js/popper.min.js"></script>
+      <script type="text/javascript" src="public/js/toastr.js"></script>
       <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
       <script type="text/javascript" src="public/js/js.js"></script>
+
+      <?php 
+      if (isset($_SESSION["notify"])) {
+         if ($_SESSION["notify"] == "wrong-user") {
+            echo '<script type="text/javascript">
+            toastr["error"]("Identifiants invalides", "Désolé !");
+            </script>';
+         } elseif ($_SESSION["notify"] == "com-success") {
+            echo '<script type="text/javascript">
+            toastr["success"]("Votre commentaire a été ajouté", "Succès !");
+            </script>';
+         }  elseif ($_SESSION["notify"] == "report-success") {
+            echo '<script type="text/javascript">
+            toastr["info"]("Le modérateur va traiter votre demande", "Commentaire signalé");
+            </script>';
+         } elseif ($_SESSION["notify"] == "wrong-post") {
+            echo '<script type="text/javascript">
+            toastr["error"]("Cet article n\'existe pas", "Désolé !");
+            </script>';
+         }               
+         $_SESSION["telltale"] = "1";
+      }
+      if (isset($_SESSION["telltale"])) {
+         session_destroy();
+      }
+      ?>
    </body>
 </html>
