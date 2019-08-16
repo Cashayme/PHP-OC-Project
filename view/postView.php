@@ -42,7 +42,7 @@
 
     <form class="col-12" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>#title-comments" method="post">
         <h3 class="col-11">Postez un commentaire</h3>
-      <div class="form-group col-lg-2">
+      <div class="form-group col-3">
         <label for="author">Auteur</label>
         <input type="text" class="form-control" name="author" id="author" placeholder="Entrez un nom">
     </div>

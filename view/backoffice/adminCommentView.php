@@ -32,7 +32,7 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Auteur</th>
-                  <th scope="col" class="w-50">Message</th>
+                  <th scope="col" class="w-50 d-none d-md-block">Message</th>
                   <th scope="col">Date</th>
                   <th scope="col">Statut</th>
                   <th scope="col">Action</th>
@@ -61,13 +61,13 @@
                 echo '<tr>
                   <th scope="row">' .$comment["id"]. '</th>
                   <td>' .htmlspecialchars($comment["author"]). '</td>
-                  <td class="d-sm-none d-md-block">' .htmlspecialchars($comment["comment"]). '</td>
+                  <td class="d-none d-md-block">' .htmlspecialchars($comment["comment"]). '</td>
                   <td>' . $comment["comment_date_fr"]. '</td>
                   <td class="text-danger text-center ">';
                   if ($comment["reported"] == 1) {
                     echo '<i class="fas fa-exclamation-triangle"></i>';
                   }
-                    echo '</td>
+                  echo '</td>
                     <td>
                     <a href="index.php?action=delComment&amp;id='.$comment["id"].'" class="btn btn-danger mb-2 text-white mr-1">Supprimer</a>';
                     if ($comment["reported"] == 1) {

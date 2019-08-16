@@ -67,10 +67,13 @@ body {
 
 .text-container {
 	padding: 21px;
+	padding-bottom: 38px;
     background-color: #00000014;
     margin: 28px;
     box-shadow: inset 0px 0px 2px;
     position: relative;
+    width: 96%;
+    overflow-wrap: break-word;
 }
 
 .pic-container {

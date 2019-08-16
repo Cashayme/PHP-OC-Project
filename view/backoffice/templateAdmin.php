@@ -83,8 +83,9 @@
               </li>
             </ul>
             <hr>
-            <a href="index.php?action=disconnect">
-              <p class="ml-4"><i class="fas fa-sign-out-alt"></i>Se déconnecter</p>
+            <a href="index.php?action=disconnect" class="nav-link bg-danger">
+              <i class="fas fa-sign-out-alt nav-icon"></i>
+              <p>Se déconnecter</p>
             </a>
           </li>
         </ul>
