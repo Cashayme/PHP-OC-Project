@@ -17,15 +17,12 @@ class AdminController
 		elseif (isset($_SESSION['email']) && isset($_SESSION['password']) && $loginManager->getLogin($_SESSION['email'], $_SESSION['password']) == 'login') 
 			{ //Mais si une session d'identification existe et que les id sont bons, on se connecte avec
 			$reslt = $loginManager->getLogin($_SESSION['email'], $_SESSION['password']);
+		} 
+		elseif (!isset($_SESSION['email']) && !isset($_SESSION['password']) && $loginManager->getLogin($email, $password) == 'invalid user') 
+		{	
+			header('Location: index.php?action=wrongUser');
 		} else {
 			header('Location: index.php?action=notAuthorized');
-		}
-
-		if ($reslt == 'login') {
-			return 'Access';
-			require('view/indexViewAdmin.php');
-		} else {
-			return 'Access denied';
 		}
 	}
 }

@@ -10,7 +10,6 @@ require('controller/backoffice/AdminCommentController.php');
 $postController = new PostController();
 $commentController = new CommentController();
 
-
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
@@ -99,7 +98,12 @@ try {
         elseif ($_GET['action'] == 'notAuthorized') 
         {
             $_SESSION["notify"] = "not-authorized";
-            $postController->listPosts();
+            header('Location: index.php');
+        }
+        elseif ($_GET['action'] == 'wrongUser') 
+        {
+            $_SESSION["notify"] = "wrong-user";
+            header('Location: index.php');
         } 
         elseif ($_GET['action'] == 'disconnect') 
         {

@@ -136,7 +136,6 @@ a:hover {
 
 .form-control {
 	border-bottom: 1px solid #ced4da!important;
-	margin: 0 5px 1px 42px!important;
 	color: black!important;
 }
 
@@ -149,3 +148,7 @@ strong { font-weight: bold; }
     top: 4px;
     box-shadow: 2px 1px 5px #0000008f;
 }
+
+#email { margin-left: 2.5rem!important; }
+
+#password { margin-left: 2.5rem!important; }

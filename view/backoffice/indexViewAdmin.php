@@ -32,7 +32,7 @@
               <div class="card-body">
                 <p class="card-text"><?= $data['description'] ?></p>
                 <a href="index.php?action=editPost&amp;id=<?= $data['id'] ?>" class="btn btn-primary"><i class="far fa-edit"></i> Editer</a>
-                <a href="index.php?action=delPost&amp;id=<?= $data['id'] ?>" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
+                <a href="index.php?action=delPost&amp;id=<?= $data['id'] ?>" onclick="return confirm('Confirmer la suppression de cet article ?');" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
               </div>
             </div>
             <?php

@@ -32,7 +32,7 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Auteur</th>
-                  <th scope="col" class="w-50 d-none d-md-block">Message</th>
+                  <th scope="col" class="d-none d-md-block">Message</th>
                   <th scope="col">Date</th>
                   <th scope="col">Statut</th>
                   <th scope="col">Action</th>
@@ -47,11 +47,11 @@
                   echo ' <tr>
                   <th scope="row"> '. $comment["id"] .'</th>
                   <td>' . htmlspecialchars($comment["author"]) . '</td>
-                  <td class="d-sm-none d-md-block">' . htmlspecialchars($comment["comment"]) .'</td>
+                  <td class="d-none d-md-block">' . htmlspecialchars($comment["comment"]) .'</td>
                   <td>' . $comment["comment_date_fr"] . '</td>
                   <td class="text-danger text-center"><i class="fas fa-exclamation-triangle"></i></td>
                   <td>
-                    <a href="index.php?action=delComment&amp;id='.$comment["id"].'" class="btn btn-danger mb-2 text-white">Supprimer</a>
+                    <a href="index.php?action=delComment&amp;id='.$comment["id"].'" class="btn btn-danger mb-2 text-white" onclick="return confirm(\'Confirmer la suppression de ce commentaire ?\');">Supprimer</a>
                     <a href="index.php?action=revokeComment&amp;id='.$comment["id"].'" class="btn btn-success mb-2 text-white">Révoquer</a>
                   </td>
                 </tr>';
@@ -69,7 +69,7 @@
                   }
                   echo '</td>
                     <td>
-                    <a href="index.php?action=delComment&amp;id='.$comment["id"].'" class="btn btn-danger mb-2 text-white mr-1">Supprimer</a>';
+                    <a href="index.php?action=delComment&amp;id='.$comment["id"].'" class="btn btn-danger mb-2 text-white mr-1" onclick="return confirm(\'Confirmer la suppression de ce commentaire ?\');">Supprimer</a>';
                     if ($comment["reported"] == 1) {
                       echo '<a href="index.php?action=revokeComment&amp;id='.$comment["id"].'" class="btn btn-success mb-2 text-white">Révoquer</a>';
                     }

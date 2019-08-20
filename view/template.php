@@ -2,6 +2,8 @@
 <html>
    <head>
       <title>Billet simple pour l'Alaska - Jean Forteroche</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="public/media/favicon.ico">
       <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="public/css/mdb.min.css">
       <link rel="stylesheet" type="text/css" href="public/css/toastr.css">
@@ -15,7 +17,11 @@
          <header class="row">
             <nav class="navbar navbar-expand-lg navbar-dark col-12">
                <a class="navbar-brand d-none d-lg-block" href="index.php">Billet simple pour l'Alaska</a>
-               <ul class="navbar-nav mr-auto">
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
                      <a class="nav-link" href="index.php#book">
                      Roman
@@ -68,6 +74,8 @@
                   </div>
                   </div>
                </ul>
+               </div>
+               
             </nav>
          </header>
          <?= $content ?>

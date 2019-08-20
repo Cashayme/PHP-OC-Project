@@ -42,13 +42,13 @@
 
     <form class="col-12" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>#title-comments" method="post">
         <h3 class="col-11">Postez un commentaire</h3>
-      <div class="form-group col-3">
+      <div class="form-group col-lg-3 col-md-4 col-8">
         <label for="author">Auteur</label>
         <input type="text" class="form-control" name="author" id="author" placeholder="Entrez un nom">
     </div>
     <div class="form-group col-11">
         <label for="comment">Commentaire</label>
-        <textarea class="form-control" name="comment" id="comment" rows="3" placeholder="Votre commentaire"></textarea>
+        <textarea class="form-control ml-0" name="comment" id="comment" rows="3" placeholder="Votre commentaire"></textarea>
     </div>
     <div class="col-11">
         <button type="submit" class="btn btn-primary">Envoyer</button>
